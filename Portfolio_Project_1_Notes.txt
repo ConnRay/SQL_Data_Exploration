@@ -1,0 +1,25 @@
+Guided SQL Data Exploration Project:
+- Here is a list of notes and steps I took along the way as I worked through this project
+
+- Go to "https://ourworldindata.org/covid-deaths" and download the data set
+- Export the data set to google docs to get access to google sheets for formatting
+- Google sheets is either unable or unwilling (in a timely manner) so I will begin by processing the data into the correct format using python
+- Filter Dataset down to the following relevant columns:
+		- first 26 columns + popoulation save as covid_deaths
+		- remove columns 5 to 26 and population save as covid_vaccinations
+- Add data to BigQuery Sandbox
+- Verify necessary columns from covid_deaths table exist (Location, date, total_cases, new_cases, total_deaths, population)
+- Get death percentage by country (Show Unitied states)
+- Get % of confirmed cases in population by country (show Unitied States)
+- Show Countries with the highest % infection rates
+- Output Death Rates for each country
+- Start looking at the world as a whole per day (to get whole remove date column)
+	- Get global death percentage
+	- use SUM(new_cases) to get the total across the world of covid infections
+	- repeat for new_deaths to get total deaths 
+	- incorrect data type for new_deaths cast as an int
+- Join the vaccination table with the death table to start getting vaccination data
+- To get the total vaccinations for the each country use the formula:  sum(new_vaccinations) OVER (PARTITION BY Location)
+- Use CTE to use total_vax to in order to get vaccinations vs population
+- create a view
+- BigQuery is asking for billing information to export the view so I will not be doing that.
